@@ -1,10 +1,11 @@
 import React from 'react'
+import FetchUsername from '../components/FetchUsername'
 
 const Manager = () => {
   return (
     <div>
-      <h1>Chef</h1>
-    </div>
+    <FetchUsername/>
+  </div>
   )
 }
 

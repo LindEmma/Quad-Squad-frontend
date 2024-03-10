@@ -2,6 +2,7 @@ import React, { useState,useEffect  } from "react";
 import axios from "axios";
 import { useNavigate  } from "react-router-dom";
 import NotionLogin from "../components/NotionLogin";
+// import { ToastContainer, toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -23,12 +24,26 @@ const Login = () => {
           history("/ProjectManager");
           break;
         default:
-          history("/default-page");
+          history("/");
           break;
       }
     }
   }, [userRole, history]);
 
+  async function GetUsernameAndRole() {
+    try {
+      const getResponse = await axios.get("http://localhost:4000/usernameAndRole");
+      if (getResponse.status === 200) {
+        const userData = getResponse.data;
+        setUserRole(userData.userRole[0]);
+      }else {
+        console.log("Failed to fetch username and role");
+      }
+    } catch (error) {
+      console.log("Error fetching username and role: ", error);
+    }
+  }
+  
   async function LoginHandler() {
     try {
       const response = await axios.post(
@@ -38,14 +53,13 @@ const Login = () => {
           password
         }
       );
-
       if (response.status === 200) {
-        const userData = response.data;
-        setUserRole(userData.userRoles[0]);
-
-        }
+        GetUsernameAndRole();
+      } else {
+        console.log("Login failed: Incorrect employeID or password");
+      }
     } catch (error) {
-      console.log("Error: ", error);
+      console.log("Error during login: ", error);
     }
   }
   return (
