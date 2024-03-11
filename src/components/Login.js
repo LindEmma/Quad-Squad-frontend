@@ -58,10 +58,6 @@ const Login = () => {
       );
       if (response.status === 200) {
 
-        const userData = response.data;
-        setUserRole(userData.userRoles[0]);
-
-
         GetUsernameAndRole();
       } else {
         console.log("Login failed: Incorrect employeID or password");
@@ -110,9 +106,7 @@ const Login = () => {
 
             <div class="login">
               <button id="login-btn" type="submit">Logga in</button>
-
-              <NotionLogin/>
-
+              <NotionLogin />
             </div>
           </form>
         </section>
