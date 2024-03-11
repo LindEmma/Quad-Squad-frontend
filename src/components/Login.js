@@ -110,7 +110,9 @@ const Login = () => {
 
             <div class="login">
               <button id="login-btn" type="submit">Logga in</button>
-              <NotionLogin />
+
+              <NotionLogin/>
+
             </div>
           </form>
         </section>
