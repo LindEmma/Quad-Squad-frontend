@@ -1,6 +1,9 @@
-import React, { useState,useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import QuadSquadLogo from "../img/QuadSquad 1.png";
+import "../css/Login.css";
+
 
 
 const Login = () => {
@@ -42,40 +45,54 @@ const Login = () => {
         const userData = response.data;
         setUserRole(userData.userRoles[0]);
 
-        }
+      }
     } catch (error) {
       console.log("Error: ", error);
     }
   }
   return (
     <div>
-        <h1>Logga in</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          LoginHandler();
-        }}
-      >
-        <label htmlFor="employeID">* Anställningsid</label>
-        <input
-          type="text"
-          name="employeID"
-          value={employeID}
-          placeholder="Anställningsid"
-          required
-          onChange={(e) => setEmployeID(e.target.value)}
-        />
-        <label htmlFor="password">* Lösenord</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          placeholder="Lösenord"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Logga in</button>
-      </form>
+      <section className="login-page">
+        <section className="picture-container">
+        </section>
+
+        <section className="login-container">
+          <div class="logo">
+            <img src={QuadSquadLogo} alt="Loga" />
+          </div>
+          <form className="formBox"
+            onSubmit={(e) => {
+              e.preventDefault();
+              LoginHandler();
+            }}
+          >
+            <div className="inputBox w70">
+              <input
+                type="text"
+                name="employeID"
+                value={employeID}
+                placeholder="Anställnings ID"
+                required
+                onChange={(e) => setEmployeID(e.target.value)}
+              /></div>
+
+            <div class="inputBox w70">
+              <input
+                type="password"
+                name="password"
+                value={password}
+                placeholder="Lösenord"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              /></div>
+
+            <div class="inputBox w50">
+              <button type="submit">Logga in</button>
+            </div>
+          </form>
+        </section>
+
+      </section>
     </div>
   );
 };
