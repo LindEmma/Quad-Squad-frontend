@@ -1,9 +1,10 @@
 import React from 'react'
+import FetchUsername from '../components/FetchUsername'
 
 const Employee = () => {
   return (
     <div>
-      <h1>Anställd</h1>
+      <FetchUsername/>
     </div>
   )
 }

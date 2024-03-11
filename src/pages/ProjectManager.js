@@ -1,10 +1,11 @@
 import React from 'react'
+import FetchUsername from '../components/FetchUsername'
 
 const ProjectManager = () => {
   return (
     <div>
-      <h1>projektledare</h1>
-    </div>
+    <FetchUsername/>
+  </div>
   )
 }
 
