@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import QuadSquadLogo from "../img/QuadSquad 1.png";
 import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
-// import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -39,14 +39,14 @@ const Login = () => {
       if (getResponse.status === 200) {
         const userData = getResponse.data;
         setUserRole(userData.userRole[0]);
-      }else {
+      } else {
         console.log("Failed to fetch username and role");
       }
     } catch (error) {
       console.log("Error fetching username and role: ", error);
     }
   }
-  
+
   async function LoginHandler() {
     try {
       const response = await axios.post(
@@ -110,7 +110,9 @@ const Login = () => {
 
             <div class="login">
               <button id="login-btn" type="submit">Logga in</button>
+
               <NotionLogin/>
+
             </div>
           </form>
         </section>
