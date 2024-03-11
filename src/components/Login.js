@@ -108,8 +108,8 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               /></div>
 
-            <div class="inputBox w50">
-              <button type="submit">Logga in</button>
+            <div class="login">
+              <button id="login-btn" type="submit">Logga in</button>
               <NotionLogin/>
             </div>
           </form>
