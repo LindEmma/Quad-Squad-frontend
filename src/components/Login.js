@@ -57,11 +57,6 @@ const Login = () => {
         }
       );
       if (response.status === 200) {
-
-        const userData = response.data;
-        setUserRole(userData.userRoles[0]);
-
-
         GetUsernameAndRole();
       } else {
         console.log("Login failed: Incorrect employeID or password");
