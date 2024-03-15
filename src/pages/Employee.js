@@ -1,12 +1,16 @@
-import React from 'react'
-import FetchUsername from '../components/FetchUsername'
+import React from "react";
+import FetchUsername from "../components/FetchUsername";
+import MyNavbar from "../components/navbar";
+import ActiveProjectsEmployee from "../components/ActiveProjectsEmployee";
 
 const Employee = () => {
   return (
     <div>
-      <FetchUsername/>
+      <MyNavbar></MyNavbar>
+      <FetchUsername />
+      <ActiveProjectsEmployee></ActiveProjectsEmployee>
     </div>
-  )
-}
+  );
+};
 
-export default Employee
+export default Employee;
