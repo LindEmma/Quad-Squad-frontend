@@ -5,6 +5,7 @@ import Employee from "./pages/Employee";
 import ProjectManager from './pages/ProjectManager';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'react-toastify/dist/ReactToastify.css';
+import AuthRedirectPage from "./components/AuthRedirectPage";
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/Employee" element={<Employee/>}/>
           <Route path="/Manager" element={<Manager/>}/>
           <Route path="/ProjectManager" element={<ProjectManager/>}/>
+          <Route path="/AuthRedirectPage" element={<AuthRedirectPage />} />
         </Routes>
       </Router>
     </>

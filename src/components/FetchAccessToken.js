@@ -1,17 +1,23 @@
-import axios from 'axios';
-
-const FetchAccessToken = async () => {
+const FetchAccessToken = async (code) => {
   try {
-    const response = await axios.get('http://localhost:4000/get-token');
-    if(response.status === 200){
-      const tokenData = response.data;
-      const accessToken = tokenData.accessToken;
-      return accessToken;
+    const response = await fetch("http://localhost:4000/get-token", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ code }),
+    });
+    console.log('Code:', code);
+    if (!response.ok) {
+      throw new Error('Kunde inte byta ut kod för åtkomsttoken');
     }
-    
+  
+    const tokenData = await response.json();
+    console.log('Token data:', tokenData);
+
+    console.log('Åtkomsttoken erhållet!');
   } catch (error) {
-    console.error('Error fetching access token:', error);
-    return null;
+    console.error('Fel vid försök att byta ut kod för åtkomsttoken:', error.message);
   }
 };
 
