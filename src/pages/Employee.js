@@ -1,14 +1,17 @@
 import React from "react";
 import FetchUsername from "../components/FetchUsername";
-import MyNavbar from "../components/navbar";
 import ActiveProjectsEmployee from "../components/ActiveProjectsEmployee";
+import "../css/ActiveProjects.css";
 
 const Employee = () => {
   return (
     <div>
-      <MyNavbar></MyNavbar>
       <FetchUsername />
-      <ActiveProjectsEmployee></ActiveProjectsEmployee>
+      <div className="Employee-container">
+        <div className="project-cards">
+          <ActiveProjectsEmployee></ActiveProjectsEmployee>
+        </div>
+      </div>
     </div>
   );
 };
