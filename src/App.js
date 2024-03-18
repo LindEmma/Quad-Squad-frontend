@@ -6,6 +6,7 @@ import Employee from "./pages/Employee";
 import ProjectManager from "./pages/ProjectManager";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/navbar";
+import AuthRedirectPage from "./components/AuthRedirectPage";
 
 const App = () => {
   return (
@@ -32,6 +33,10 @@ const App = () => {
             <Route
               path="/ProjectManager"
               element={<ProjectManager />}
+            />
+            <Route 
+              path="/AuthRedirectPage" 
+              element={<AuthRedirectPage />} 
             />
           </Routes>
         </main>
