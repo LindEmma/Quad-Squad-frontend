@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../css/fetchUsername.css";
 
 const FetchUsername = () => {
   const [userName, setUserName] = useState("");
@@ -22,8 +23,8 @@ const FetchUsername = () => {
     fetchUsername();
   }, []);
   return (
-    <div>
-      <h4>Du är inloggad som: {userName}</h4>
+      <div className="username-container"> {/* Tilldela klassen här */}
+      <h4>inloggad som: {userName}</h4>
     </div>
   );
 };
