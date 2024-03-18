@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 
-function ProjectTable() {
+function ActiveProjectsEmployee() {
   const [APIData, setAPIData] = useState([]);
 
   const getAPIdata = (e) => {
     Axios.post("http://localhost:8000/ActiveProjects")
       .then((response) => {
-        setAPIData(response.data.results);
-        console.log(response.data.results);
+        const filteredData = response.data.results.filter((item) => {
+          return item.properties.Status.select.name === "Active";
+        });
+        setAPIData(filteredData);
+        console.log(filteredData);
       })
       .catch((error) => {
         console.log(error);
@@ -19,40 +22,49 @@ function ProjectTable() {
     getAPIdata();
   }, []);
 
+  if (!APIData) {
+    return <p>Det finns inga aktiva projekt just nu</p>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="Data">
-          <p>API DATA</p>
-          {APIData.map((data) => {
-            return (
-              <div key={data.id}>
-                <div className="card">
-                  <div className="card-body">
-                    <h2 className="card-title">
-                      {data.properties.Projectname.title[0]?.plain_text}
-                    </h2>
-                    <p className="card-text">
-                      With supporting text below as a natural lead-in to
-                      additional content.
+    <div className="Data">
+      <h1 className="Projects-h1">Aktiva projekt</h1>
+      {APIData.map((data) => {
+        return (
+          <div key={data.id}>
+            <div className="card">
+              <div className="card-body">
+                <h2 className="card-title">
+                  {data.properties.Projectname.title[0]?.plain_text}
+                </h2>
+                <div className="row">
+                  <div className="date-container col-md-3">
+                    <h6>Startdatum</h6>
+                    <p className="date">
+                      {data.properties.Timespan.date.start}
                     </p>
-                    <div className="text-end">
-                      <a
-                        href="#"
-                        class="btn btn-success"
-                      >
-                        Tidsrapportera
-                      </a>
-                    </div>
+                  </div>
+                  <div className="date-container col-md-3">
+                    <h6>Planerat slutdatum</h6>
+                    <p className="date">{data.properties.Timespan.date.end}</p>
+                  </div>
+                  <div className="col-md-3"></div>
+                  <div className="btn-container text-end col-md-3">
+                    <a
+                      href="#"
+                      className="btn"
+                    >
+                      Rapportera tid
+                    </a>
                   </div>
                 </div>
-                <br></br>
               </div>
-            );
-          })}
-        </div>
-      </header>
+            </div>
+            <br></br>
+          </div>
+        );
+      })}
     </div>
   );
 }
-export default ProjectTable;
+export default ActiveProjectsEmployee;

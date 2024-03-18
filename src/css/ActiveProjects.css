@@ -1,0 +1,55 @@
+.Employee-container {
+  padding: 3em;
+
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.project-cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.Projects-h1 {
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.card-title {
+  padding-bottom: 20px;
+}
+.card {
+  background-color: #f2f2f2;
+  width: 100%;
+  padding: 0.5em;
+}
+.Data {
+  width: 1100px;
+}
+.btn {
+  background-color: #4d7abc;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn:hover {
+  background-color: #a193bf;
+  color: white;
+}
+.date-container {
+  padding: 30px;
+}
+.date {
+  background-color: white;
+  width: 200px;
+  border-radius: 7%;
+  padding: 7px;
+}
+.badge {
+  color: black;
+}
