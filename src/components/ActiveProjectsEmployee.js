@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import ModalPopUp from "./ModalPopUp.js";
 
 function ActiveProjectsEmployee() {
   const [APIData, setAPIData] = useState([]);
@@ -29,6 +30,7 @@ function ActiveProjectsEmployee() {
   return (
     <div className="Data">
       <h1 className="Projects-h1">Aktiva projekt</h1>
+
       {APIData.map((data) => {
         return (
           <div key={data.id}>
@@ -37,6 +39,7 @@ function ActiveProjectsEmployee() {
                 <h2 className="card-title">
                   {data.properties.Projectname.title[0]?.plain_text}
                 </h2>
+
                 <div className="row">
                   <div className="date-container col-md-3">
                     <h6>Startdatum</h6>
@@ -50,12 +53,10 @@ function ActiveProjectsEmployee() {
                   </div>
                   <div className="col-md-3"></div>
                   <div className="btn-container text-end col-md-3">
-                    <a
-                      href="#"
-                      className="btn"
-                    >
-                      Rapportera tid
-                    </a>
+                    <ModalPopUp></ModalPopUp>
+                  </div>
+                  <div className="text-end">
+                    <button className="btn">Gamla tidsrapporter</button>
                   </div>
                 </div>
               </div>
