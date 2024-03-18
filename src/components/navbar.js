@@ -7,16 +7,21 @@ import FetchUsername from '../components/FetchUsername'
 
 export default class MyNavbar extends React.Component {
     handleLogout = () => { 
+
         // Logga ut logik (implementera din logik här)
         // Navigera användaren till startsidan
         localStorage.removeItem('user'); // Om du sparar användarinformation
         window.location.href = 'http://localhost:3000/'; // Navigera till startsidan
+  
     }
     render() {
         
         return (
             <div>
+
                  <BootstrapNavbar bg="dark" variant="dark">
+
+                
                         <Container>
                         {/* Justera storleken på bilden här */}
                         <Image 
@@ -41,5 +46,6 @@ export default class MyNavbar extends React.Component {
             </div>
         )
     }
+
 }
 
