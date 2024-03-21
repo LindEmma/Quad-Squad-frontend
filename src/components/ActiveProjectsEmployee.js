@@ -7,7 +7,7 @@ function ActiveProjectsEmployee() {
   const [activeProjects, setActiveProjects] = useState(null);
 
   useEffect(() => {
-    const storedUserID = JSON.parse(localStorage.getItem("userID"));
+    const storedUserID = JSON.parse(localStorage.getItem("userID")); // hämtar userID från localstorage
   
     async function fetchUsername(){
       try {
