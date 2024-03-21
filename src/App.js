@@ -7,6 +7,7 @@ import ProjectManager from "./pages/ProjectManager";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/navbar";
 import AuthRedirectPage from "./components/AuthRedirectPage";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -40,7 +41,9 @@ const App = () => {
             />
           </Routes>
         </main>
-        <footer></footer>
+        <footer>
+          <Footer/>
+        </footer>
       </Router>
     </>
   );
