@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import QuadSquadLogo from "../img/QuadSquad 1.png";
 import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
-// import { ToastContainer, toast } from "react-toastify";
+
+//import { ToastContainer, toast } from "react-toastify";
+
 
 const Login = () => {
   const [employeID, setEmployeID] = useState("");
@@ -40,6 +42,7 @@ const Login = () => {
       if (getResponse.status === 200) {
         const userData = getResponse.data;
         setUserRole(userData.userRole[0]);
+        localStorage.setItem("userID", JSON.stringify(userData.userId)); // Spara användar-ID:t i localStorage
       } else {
         console.log("Failed to fetch username and role");
       }
