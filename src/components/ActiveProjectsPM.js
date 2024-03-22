@@ -87,11 +87,16 @@ function ActiveProjectsPM() {
 
                     <ul className="list-group">
                       <li className="list-group-item">
-                        Arbetade timmar:
+                        Totalt arbetade timmar:
                         <span className="badge">
                           {data.properties.WorkedHours.rollup.number}
                         </span>
+                        <span className="badge">
+                          Senaste veckan:{" "}
+                          {data.properties.HoursLastWeek.rollup.number}
+                        </span>
                       </li>
+
                       <li className="list-group-item">
                         Totalt planerade timmar:{" "}
                         <span className="badge">
@@ -109,6 +114,7 @@ function ActiveProjectsPM() {
                     <br></br>
                     <ProjectProgressBar
                       percent={data.properties.PercentFinished.formula.number}
+                      variant={data.properties.ProgressBarColour.formula.string}
                     ></ProjectProgressBar>
                     <br></br>
                   </div>
