@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import QuadSquadLogo from "../img/QuadSquad 1.png";
 import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
+
 //import { ToastContainer, toast } from "react-toastify";
+
 
 const Login = () => {
   const [employeID, setEmployeID] = useState("");
@@ -31,6 +33,7 @@ const Login = () => {
     }
   }, [userRole, history]);
 
+  
   async function GetUsernameAndRole() {
     try {
       const getResponse = await axios.get(
@@ -58,7 +61,7 @@ const Login = () => {
         }
       );
       if (response.status === 200) {
-        GetUsernameAndRole();
+       GetUsernameAndRole();
       } else {
         console.log("Login failed: Incorrect employeID or password");
       }

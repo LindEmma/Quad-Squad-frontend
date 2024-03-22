@@ -77,7 +77,7 @@ function ActiveProjectsEmployee() {
                   </div>
                   <div className="col-md-3"></div>
                   <div className="btn-container text-end col-md-3">
-                    <ModalPopUp></ModalPopUp>
+                    <ModalPopUp data={data}></ModalPopUp>
                   </div>
                   <div className="text-end">
                     <button className="btn">Gamla tidsrapporter</button>

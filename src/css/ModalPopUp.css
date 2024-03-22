@@ -1,0 +1,33 @@
+Button.btnsubmit {
+    background-color: #4d7abc;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid #7f8488;
+    box-shadow: 1px 1px 10px #7f8488b0;
+    border-radius: 40px;
+}
+
+Button.btnclose {
+    background-color: #ffffffca;
+    color: #7f8488;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid #7f8488;
+    box-shadow: 1px 1px 10px #7f8488b0;
+    border-radius: 40px;
+}
+
+Button.btnsubmit:hover {
+    background-color: #a193bf;
+    color: white;
+    border: #a193bf 1px solid;
+    box-shadow: inset 1px 3px #7f84886b;
+}
+
+Button.btnclose:hover {
+    background-color: #878ba6;
+    color: white;
+    border: #a193bf 1px solid;
+    box-shadow: inset 1px 3px #7f84886b;
+}
