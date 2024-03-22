@@ -6,7 +6,10 @@ function ProjectProgressBar(props) {
   return (
     <div>
       <h7>{props.percent}% av projektet avklarat</h7>
-      <ProgressBar now={props.percent} />
+      <ProgressBar
+        variant={props.variant}
+        now={props.percent}
+      />
     </div>
   );
 }
