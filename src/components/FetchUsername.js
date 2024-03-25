@@ -24,7 +24,7 @@ const FetchUsername = () => {
   }, []);
   return (
       <div className="username-container"> {/* Tilldela klassen här */}
-      <h4>inloggad som: {userName}</h4>
+      <h4>{userName}</h4>
     </div>
   );
 };
