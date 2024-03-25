@@ -42,6 +42,7 @@ function ShowPersonnel() {
   return (
     <div className="Data">
       <h1 className="Projects-h1">Anställda</h1>
+      <br></br>
 
       {personnelData.map(
         (

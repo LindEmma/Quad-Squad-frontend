@@ -8,8 +8,8 @@ function ActiveProjectsEmployee() {
 
   useEffect(() => {
     const storedUserID = JSON.parse(localStorage.getItem("userID")); // hämtar userID från localstorage
-  
-    async function fetchUsername(){
+
+    async function fetchUsername() {
       try {
         const response = await axios.get(
           "http://localhost:4000/usernameAndRole"
@@ -25,10 +25,13 @@ function ActiveProjectsEmployee() {
       }
     }
     fetchUsername();
-  
+
     async function getActiveProjects() {
       try {
-        const response = await axios.post("http://localhost:8000/ActiveProjects", { storedUserID });
+        const response = await axios.post(
+          "http://localhost:8000/ActiveProjects",
+          { storedUserID }
+        );
         if (response.status === 200) {
           const userProjects = response.data.results.filter((project) => {
             const isActive = project.properties.Status.select.name === "Active";
@@ -43,14 +46,14 @@ function ActiveProjectsEmployee() {
         console.log(error);
       }
     }
-    
+
     getActiveProjects();
   }, []);
 
   if (!activeProjects) {
     return <p>Det finns inga aktiva projekt för {currentUser} just nu</p>;
   }
-  
+
   return (
     <div className="Data">
       <h1 className="Projects-h1">Aktiva projekt för {currentUser}</h1>
