@@ -7,17 +7,25 @@ function ActiveProjectsPM() {
   const [originalData, setOriginalData] = useState([]);
   const [filter, setFilter] = useState("active");
 
-  const getAPIdata = (e) => {
-    Axios.post("http://localhost:8000/ActiveProjects")
-      .then((response) => {
+  useEffect(() => {
+    const storedUserID = JSON.parse(localStorage.getItem("userID"));
+
+    async function getAPIdata() {
+      try {
+        const response = await Axios.post(
+          "http://localhost:8000/ActiveProjects",
+          { storedUserID }
+        ); // Använd await för att vänta på svar
         const data = response.data.results;
         setAPIData(data);
         setOriginalData(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
-      });
-  };
+      }
+    }
+
+    getAPIdata();
+  }, []);
 
   const filterData = () => {
     const filters = {
@@ -37,9 +45,6 @@ function ActiveProjectsPM() {
   };
 
   useEffect(() => {
-    getAPIdata();
-  }, []);
-  useEffect(() => {
     filterData();
   }, [filter, originalData]);
 
@@ -49,7 +54,8 @@ function ActiveProjectsPM() {
 
   return (
     <div className="Data">
-      <h1 className="Projects-h1">Projekt</h1>
+      <h1 className="Projects-h1">Projekt du är projektledare för</h1>
+      <br></br>
 
       <div className="text-end">
         <select
