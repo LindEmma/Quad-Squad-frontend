@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import ModalPopUp from "./ModalPopUp.js";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
+import { Table } from "react-bootstrap";
 
 function ActiveProjectsEmployee() {
   const [currentUser, setCurrentUser] = useState(null);
   const [activeProjects, setActiveProjects] = useState(null);
+  const [openState, setOpenState] = useState(false);
 
   useEffect(() => {
-    const storedUserID = JSON.parse(localStorage.getItem("userID")); // hämtar userID från localstorage
+    const storedUserID = JSON.parse(localStorage.getItem("userID"));
 
     async function fetchUsername() {
       try {
@@ -32,16 +36,7 @@ function ActiveProjectsEmployee() {
           "http://localhost:8000/ActiveProjects",
           { storedUserID }
         );
-        if (response.status === 200) {
-          const userProjects = response.data.results.filter((project) => {
-            const isActive = project.properties.Status.select.name === "Active";
-            return isActive;
-          });
-
-          if (userProjects.length > 0) {
-            setActiveProjects(userProjects);
-          }
-        }
+        setActiveProjects(response.data.results);
       } catch (error) {
         console.log(error);
       }
@@ -50,6 +45,18 @@ function ActiveProjectsEmployee() {
     getActiveProjects();
   }, []);
 
+  const toggleOpen = (id) => {
+    setOpenState((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
+  const hasTimeReports = (data) => {
+    //checks if there is any timereports for the project
+    return data.timereports && data.timereports.length > 0;
+  };
+
   if (!activeProjects) {
     return <p>Det finns inga aktiva projekt för {currentUser} just nu</p>;
   }
@@ -57,16 +64,37 @@ function ActiveProjectsEmployee() {
   return (
     <div className="Data">
       <h1 className="Projects-h1">Aktiva projekt för {currentUser}</h1>
+      <br />
 
       {activeProjects.map((data) => {
         return (
           <div key={data.id}>
             <div className="card">
               <div className="card-body">
-                <h2 className="card-title">
-                  {data.properties.Projectname.title[0]?.plain_text}
-                </h2>
-
+                <div className="row">
+                  <div className="col-md-6">
+                    <h2 className="card-title">
+                      {data.properties.Projectname.title[0]?.plain_text}
+                    </h2>
+                  </div>
+                  <div className="col-md-3 text-end mt-1">
+                    <ModalPopUp data={data}></ModalPopUp>
+                  </div>
+                  <div className="col-md-3 text-end">
+                    <Button
+                      className="btn pb-0"
+                      onClick={() => toggleOpen(data.id)}
+                      aria-controls="example-collapse-text"
+                      aria-expanded={openState[data.id]}
+                    >
+                      {openState[data.id] ? (
+                        <p>Stäng tidsrapporter</p>
+                      ) : (
+                        <p>Se tidsrapporter</p>
+                      )}
+                    </Button>
+                  </div>
+                </div>
                 <div className="row">
                   <div className="date-container col-md-3">
                     <h6>Startdatum</h6>
@@ -78,17 +106,64 @@ function ActiveProjectsEmployee() {
                     <h6>Planerat slutdatum</h6>
                     <p className="date">{data.properties.Timespan.date.end}</p>
                   </div>
-                  <div className="col-md-3"></div>
-                  <div className="btn-container text-end col-md-3">
-                    <ModalPopUp data={data}></ModalPopUp>
-                  </div>
-                  <div className="text-end">
-                    <button className="btn">Gamla tidsrapporter</button>
+
+                  <div className="collapse-container col-md-6">
+                    <div className=" text-center">
+                      <Collapse in={openState[data.id]}>
+                        <div>
+                          {hasTimeReports(data) ? (
+                            data.timereports.map((report) => (
+                              <div
+                                key={report.id}
+                                className="row"
+                              >
+                                <div className="table-container">
+                                  <Table
+                                    striped
+                                    bordered
+                                    hover
+                                  >
+                                    <thead>
+                                      <tr>
+                                        <th>Datum</th>
+                                        <th>Arbetade timmar</th>
+                                        <th>Kommentar</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          {report.properties.Date.date.start}
+                                        </td>
+                                        <td className="text-center">
+                                          {report.properties.Hours.number}
+                                        </td>
+                                        <td>
+                                          {
+                                            report.properties.Note.title[0]
+                                              ?.plain_text
+                                          }
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </Table>
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            <p className="mt-3 bg-light border text-center p-1">
+                              Det finns inga rapporterade tider för det här
+                              projektet
+                            </p>
+                          )}
+                        </div>
+                      </Collapse>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <br></br>
+            <br />
           </div>
         );
       })}
