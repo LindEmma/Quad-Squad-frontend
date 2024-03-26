@@ -53,3 +53,12 @@
 .badge {
   color: black;
 }
+
+Table {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+thead {
+  position: sticky;
+  top: 0;
+}
