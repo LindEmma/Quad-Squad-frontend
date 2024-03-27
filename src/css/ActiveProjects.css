@@ -54,11 +54,17 @@
   color: black;
 }
 
-Table {
-  max-height: 300px;
-  overflow-y: scroll;
+.table-container {
+  max-height: 200px;
+  overflow-y: auto;
 }
 thead {
   position: sticky;
   top: 0;
+}
+th {
+  font-family: "Hind";
+}
+tr {
+  font-family: "Hind";
 }

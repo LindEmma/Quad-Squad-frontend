@@ -77,10 +77,10 @@ function ActiveProjectsEmployee() {
                       {data.properties.Projectname.title[0]?.plain_text}
                     </h2>
                   </div>
-                  <div className="col-md-3 text-end mt-1">
+                  <div className="modalbtn col-md-3 text-end mt-1">
                     <ModalPopUp data={data}></ModalPopUp>
                   </div>
-                  <div className="col-md-3 text-end">
+                  <div className="col-md-3 text-end mt-1">
                     <Button
                       className="btn pb-0"
                       onClick={() => toggleOpen(data.id)}
@@ -88,9 +88,9 @@ function ActiveProjectsEmployee() {
                       aria-expanded={openState[data.id]}
                     >
                       {openState[data.id] ? (
-                        <p>Stäng tidsrapporter</p>
+                        <p className="p-0 mb-2 mt-0">Stäng tidsrapporter</p>
                       ) : (
-                        <p>Se tidsrapporter</p>
+                        <p className="p-0 mb-2 mt-0">Se tidsrapporter</p>
                       )}
                     </Button>
                   </div>
@@ -110,52 +110,47 @@ function ActiveProjectsEmployee() {
                   <div className="collapse-container col-md-6">
                     <div className=" text-center">
                       <Collapse in={openState[data.id]}>
-                        <div>
-                          {hasTimeReports(data) ? (
-                            data.timereports.map((report) => (
-                              <div
-                                key={report.id}
-                                className="row"
-                              >
-                                <div className="table-container">
-                                  <Table
-                                    striped
-                                    bordered
-                                    hover
-                                  >
-                                    <thead>
-                                      <tr>
-                                        <th>Datum</th>
-                                        <th>Arbetade timmar</th>
-                                        <th>Kommentar</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>
-                                          {report.properties.Date.date.start}
-                                        </td>
-                                        <td className="text-center">
-                                          {report.properties.Hours.number}
-                                        </td>
-                                        <td>
-                                          {
-                                            report.properties.Note.title[0]
-                                              ?.plain_text
-                                          }
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </Table>
-                                </div>
-                              </div>
-                            ))
-                          ) : (
-                            <p className="mt-3 bg-light border text-center p-1">
-                              Det finns inga rapporterade tider för det här
-                              projektet
-                            </p>
-                          )}
+                        <div className="table-container">
+                          <Table
+                            striped
+                            bordered
+                            hover
+                          >
+                            <thead>
+                              <tr>
+                                <th>Datum</th>
+                                <th>Arbetade timmar</th>
+                                <th>Kommentar</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {hasTimeReports(data) ? (
+                                data.timereports.map((report) => (
+                                  <tr key={report.id}>
+                                    <td>{report.properties.Date.date.start}</td>
+                                    <td className="text-center">
+                                      {report.properties.Hours.number}
+                                    </td>
+                                    <td>
+                                      {
+                                        report.properties.Note.title[0]
+                                          ?.plain_text
+                                      }
+                                    </td>
+                                  </tr>
+                                ))
+                              ) : (
+                                <tr>
+                                  <td colSpan="3">
+                                    <p className="mt-3 bg-light border text-center p-1">
+                                      Det finns inga rapporterade tider för det
+                                      här projektet
+                                    </p>
+                                  </td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </Table>
                         </div>
                       </Collapse>
                     </div>
