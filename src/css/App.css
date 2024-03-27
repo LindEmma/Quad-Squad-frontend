@@ -1,0 +1,38 @@
+h1 {
+  font-family: "Montserrat";
+}
+h2 {
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+h6 {
+  font-family: "Hind";
+  font-weight: bold;
+  font-size: 17px;
+}
+
+h4 {
+  font-family: "Montserrat";
+}
+h7 {
+  font-family: "Hind";
+  font-size: 17px;
+}
+.badge {
+  font-family: "Hind";
+  font-size: 15px;
+}
+p {
+  font-family: "Hind";
+  font-size: 17px;
+}
+Button p {
+  font-family: "Montserrat";
+}
+.modalbtn {
+  font-family: "Montserrat";
+}
+.list-group-item {
+  font-family: "Hind";
+  font-size: 17px;
+}
