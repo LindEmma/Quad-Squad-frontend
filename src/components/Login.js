@@ -5,6 +5,7 @@ import QuadSquadLogo from "../img/QuadSquad 1.png";
 import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
 
+
 //import { ToastContainer, toast } from "react-toastify";
 
 
@@ -75,11 +76,8 @@ const Login = () => {
         <section className="picture-container"></section>
 
         <section className="login-container">
-          <div class="logo">
-            <img
-              src={QuadSquadLogo}
-              alt="Loga"
-            />
+          <div className="logo">
+            <img src={QuadSquadLogo} alt="Loga" />
           </div>
           <form
             className="formBox"
@@ -99,7 +97,7 @@ const Login = () => {
               />
             </div>
 
-            <div class="inputBox w70">
+            <div className="inputBox w70">
               <input
                 type="password"
                 name="password"
@@ -110,19 +108,19 @@ const Login = () => {
               />
             </div>
 
-            <div class="login">
-              <button
-                id="login-btn"
-                type="submit"
-              >
+            <div className="login">
+            <button 
+            id="login-btn" 
+            type="submit"
+            >
                 Logga in
               </button>
               <NotionLogin />
             </div>
           </form>
         </section>
-      </section>
-    </div>
+        </section>
+      </div>
   );
 };
 
