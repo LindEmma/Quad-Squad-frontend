@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/navbar";
 import AuthRedirectPage from "./components/AuthRedirectPage";
 import Footer from "./components/Footer";
+import "./css/App.css";
 
 const App = () => {
   return (
@@ -35,14 +36,14 @@ const App = () => {
               path="/ProjectManager"
               element={<ProjectManager />}
             />
-            <Route 
-              path="/AuthRedirectPage" 
-              element={<AuthRedirectPage />} 
+            <Route
+              path="/AuthRedirectPage"
+              element={<AuthRedirectPage />}
             />
           </Routes>
         </main>
         <footer>
-          <Footer/>
+          <Footer />
         </footer>
       </Router>
     </>

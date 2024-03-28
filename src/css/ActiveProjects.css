@@ -53,3 +53,18 @@
 .badge {
   color: black;
 }
+
+.table-container {
+  max-height: 200px;
+  overflow-y: auto;
+}
+thead {
+  position: sticky;
+  top: 0;
+}
+th {
+  font-family: "Hind";
+}
+tr {
+  font-family: "Hind";
+}
