@@ -4,14 +4,16 @@ import { useNavigate } from "react-router-dom";
 import QuadSquadLogo from "../img/QuadSquad 1.png";
 import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
+import { Alert } from "react-bootstrap";
+
 
 //import { ToastContainer, toast } from "react-toastify";
-
 
 const Login = () => {
   const [employeID, setEmployeID] = useState("");
   const [password, setPassword] = useState("");
   const [userRole, setUserRole] = useState("");
+  const [loginError, setLoginError] = useState(false);
   const history = useNavigate();
 
   useEffect(() => {
@@ -33,7 +35,6 @@ const Login = () => {
     }
   }, [userRole, history]);
 
-  
   async function GetUsernameAndRole() {
     try {
       const getResponse = await axios.get(
@@ -44,6 +45,7 @@ const Login = () => {
         setUserRole(userData.userRole[0]);
         localStorage.setItem("userID", JSON.stringify(userData.userId)); // Spara användar-ID:t i localStorage
       } else {
+        setLoginError(true);
         console.log("Failed to fetch username and role");
       }
     } catch (error) {
@@ -61,12 +63,18 @@ const Login = () => {
         }
       );
       if (response.status === 200) {
-       GetUsernameAndRole();
+        GetUsernameAndRole();
       } else {
-        console.log("Login failed: Incorrect employeID or password");
+        setLoginError(true);
+        console.log("Login failed: Incorrect employee-ID or password");
       }
     } catch (error) {
-      console.log("Error during login: ", error);
+      if (error.response && error.response.status === 401) {
+        setLoginError(true);
+        console.log("Login failed: Incorrect employeID or password");
+      } else {
+        console.log("Error during login: ", error);
+      }
     }
   }
   return (
@@ -75,12 +83,12 @@ const Login = () => {
         <section className="picture-container"></section>
 
         <section className="login-container">
-          <div class="logo">
-            <img
-              src={QuadSquadLogo}
-              alt="Loga"
-            />
+          <div className="logo">
+            <img src={QuadSquadLogo} alt="Loga" />
           </div>
+          {loginError && (
+            <Alert variant="danger">Fel anställnings-id eller lösenord</Alert>
+          )}
           <form
             className="formBox"
             onSubmit={(e) => {
@@ -99,7 +107,8 @@ const Login = () => {
               />
             </div>
 
-            <div class="inputBox w70">
+            <div className="inputBox w70">
+
               <input
                 type="password"
                 name="password"
@@ -110,19 +119,20 @@ const Login = () => {
               />
             </div>
 
-            <div class="login">
-              <button
-                id="login-btn"
-                type="submit"
-              >
+            <div className="login">
+            <button 
+            id="login-btn" 
+            type="submit"
+            >
+
                 Logga in
               </button>
               <NotionLogin />
             </div>
           </form>
         </section>
-      </section>
-    </div>
+        </section>
+      </div>
   );
 };
 

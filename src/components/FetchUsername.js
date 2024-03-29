@@ -13,8 +13,15 @@ const FetchUsername = () => {
         if (response.status === 200) {
           const userData = response.data;
           setUserName(userData.userName);
-        } else {
-          console.log("Failed to fetch user name");
+        } else if (response.status !== 200){
+          // Om begäran misslyckades, försök hämta användarnamnet från localStorage
+          const localStorageUserData = JSON.parse(localStorage.getItem("userData"));
+          if (localStorageUserData && localStorageUserData.userName) {
+            setUserName(localStorageUserData.userName);
+          } else {
+            // Om ingen användare hittades i localStorage heller, sätt ett standardvärde
+            setUserName("Kunde ej hämta användarnamn");
+          }
         }
       } catch (error) {
         console.log("Error fetching user name: ", error);

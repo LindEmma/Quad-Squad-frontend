@@ -84,11 +84,11 @@ function ActiveProjectsPM() {
                     </p>
                   </div>
                   <div className="date-container col-md-3">
-                    <h6>Planerat slutdatum</h6>
+                    <h6 className="fw-bold">Planerat slutdatum</h6>
                     <p className="date">{data.properties.Timespan.date.end}</p>
                   </div>
-                  <div className="col-md-3"></div>
-                  <div className="card-text col-md-3 rounded-3">
+                  <div className="col-md-2"></div>
+                  <div className="card-text col-md-4 rounded-3">
                     <h6>Summering</h6>
 
                     <ul className="list-group">

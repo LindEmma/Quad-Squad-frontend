@@ -33,13 +33,12 @@ const App = () => {
               path="/ProjectManager"
               element={<ProjectManager />}
             />
-            <Route 
-              path="/AuthRedirectPage" 
-              element={<AuthRedirectPage />} 
+            <Route
+              path="/AuthRedirectPage"
+              element={<AuthRedirectPage />}
             />
           </Routes>
         </main>
-        
       </Router>
     </>
   );

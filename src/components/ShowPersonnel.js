@@ -67,9 +67,9 @@ function ShowPersonnel() {
                       disabled={person.projects.length === 0}
                     >
                       {openState[person.id] ? (
-                        <p>Stäng tidsrapporter</p> //button text changes depending of openState
+                        <p className="p-0 mb-2 mt-0">Stäng tidsrapporter</p> //button text changes depending of openState
                       ) : (
-                        <p>Se tidsrapporter</p>
+                        <p className="p-0 mb-2 mt-0">Se tidsrapporter</p>
                       )}
                     </Button>
                   </div>
