@@ -6,30 +6,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import FetchUsername from '../components/FetchUsername'
 
 export default class MyNavbar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoggedIn: false // Initialt är användaren inte inloggad
-        };
-    }
-
-    componentDidMount() {
-        // Kontrollera om användaren är inloggad (t.ex. genom att kontrollera localStorage eller via en API-anrop)
-        const isLoggedIn = localStorage.getItem('isLoggedIn'); // Exempel på hur du kan kontrollera inloggning med localStorage
-        if (isLoggedIn) {
-            this.setState({ isLoggedIn: true });
-        }
-    }
-
+    
     handleLogout = () => {
-        // Logga ut logik (implementera din logik här)
-        // Navigera användaren till startsidan
         localStorage.clear();
-        window.location.href = 'http://localhost:3000/'; // Navigera till startsidan
+        window.location.href = 'http://localhost:3000/';
     }
 
     render() {
-        const { isLoggedIn } = this.state;
         return (
             <div>
                  <BootstrapNavbar bg="light" data-bs-theme="light">
