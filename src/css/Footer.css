@@ -1,3 +1,11 @@
 .footer-section{
     background-color: #212529;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    padding-top: 8px; 
+    padding-bottom: 8px; 
+    text-align: center;
+    font-size: 14px; 
 }
