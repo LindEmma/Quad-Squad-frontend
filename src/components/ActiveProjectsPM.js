@@ -8,14 +8,16 @@ function ActiveProjectsPM() {
   const [filter, setFilter] = useState("active");
 
   useEffect(() => {
+    //collects logged in users userID
     const storedUserID = JSON.parse(localStorage.getItem("userID"));
 
+    //collects the data for projects connected to logged in user (server2)
     async function getAPIdata() {
       try {
         const response = await Axios.post(
           "http://localhost:8000/ActiveProjects",
-          { storedUserID }
-        ); // Använd await för att vänta på svar
+          { storedUserID } //sends userID to server
+        );
         const data = response.data.results;
         setAPIData(data);
         setOriginalData(data);
@@ -27,6 +29,7 @@ function ActiveProjectsPM() {
     getAPIdata();
   }, []);
 
+  //different filters for active, upcoming and done projects
   const filterData = () => {
     const filters = {
       active: (item) =>
@@ -58,6 +61,7 @@ function ActiveProjectsPM() {
       <br></br>
 
       <div className="text-end">
+        {/* dropdown that lets user filter between active, upcoming and done projects */}
         <select
           id="filter"
           onChange={(e) => setFilter(e.target.value)}
@@ -69,6 +73,7 @@ function ActiveProjectsPM() {
         <br></br>
       </div>
       {APIData.map((data) => {
+        //maps through the data in server2: projects connected to logged in user
         return (
           <div key={data.id}>
             <div className="card">
@@ -118,7 +123,7 @@ function ActiveProjectsPM() {
                       </li>
                     </ul>
                     <br></br>
-                    <ProjectProgressBar
+                    <ProjectProgressBar //Progress bar shows the advancement of a project
                       percent={data.properties.PercentFinished.formula.number}
                       variant={data.properties.ProgressBarColour.formula.string}
                     ></ProjectProgressBar>

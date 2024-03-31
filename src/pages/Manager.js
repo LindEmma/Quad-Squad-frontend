@@ -6,9 +6,7 @@ const Manager = () => {
   return (
     <div>
       <div className="Employee-container">
-        <div className="project-cards">
-          <ShowPersonnel></ShowPersonnel>
-        </div>
+        <ShowPersonnel></ShowPersonnel>
       </div>
     </div>
   );

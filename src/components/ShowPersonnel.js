@@ -10,6 +10,7 @@ function ShowPersonnel() {
   useEffect(() => {
     const getPersonneldata = async () => {
       try {
+        //collects data from server4.js (People-table, Projects-table and Timereports-table)
         const response = await Axios.post(
           "http://localhost:8001/PersonnelInfo"
         );

@@ -6,9 +6,7 @@ const ProjectManager = () => {
   return (
     <div>
       <div className="Employee-container">
-        <div className="project-cards">
-          <ActiveProjectsPM></ActiveProjectsPM>
-        </div>
+        <ActiveProjectsPM></ActiveProjectsPM>
       </div>
     </div>
   );

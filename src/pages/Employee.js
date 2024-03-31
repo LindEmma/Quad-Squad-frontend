@@ -6,9 +6,7 @@ const Employee = () => {
   return (
     <div>
       <div className="Employee-container">
-        <div className="project-cards">
-          <ActiveProjectsEmployee></ActiveProjectsEmployee>
-        </div>
+        <ActiveProjectsEmployee></ActiveProjectsEmployee>
       </div>
     </div>
   );
