@@ -33,3 +33,5 @@
 **Manager.js** is the page shown when a user with the role of manager logs in. The page imports the components _ShowPersonnel.js_ which shows the content of the page and _Navbar.js_ which shows the header.
 
 **ProjectManager.js** is the page shown when a user with the role of project manager logs in. The page imports the components _ActiveProjectsPM.js_ which shows the content of the page and _Navbar.js_ which shows the header.
+
+---
