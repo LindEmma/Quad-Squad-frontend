@@ -14,15 +14,15 @@ const AuthRedirectPage = () => {
     fetchData();
   }, [code]);
 
-  // Hämta JSON-strängen från localStorage
+  // Get userData from localstorage
   const userDataString = localStorage.getItem('userData');
 
-  // Omvandla JSON-strängen till ett JavaScript-objekt
+  // Converts userData to JS object
   const userData = JSON.parse(userDataString);
 
   useEffect(() => {
     if (userData) {
-      // Hämtar användarens roll och kör en switch case beroende på vilken roll användaren har
+      // Returns user role in a switch case depending on what role user have
       switch(userData.oauthUserRole[0]) {
         case "Projektledare":
           history('/ProjectManager');
@@ -34,7 +34,7 @@ const AuthRedirectPage = () => {
           history('/Manager')
           break;
         default:
-          history.push('/'); // Login sidan
+          history.push('/'); // Login page
       }
     }
   }, [userData, history]);

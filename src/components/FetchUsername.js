@@ -10,27 +10,24 @@ const FetchUsername = () => {
         const response = await axios.get(
           "http://localhost:4000/usernameAndRole"
         );
+        //If status is good, we store username in setUserName hook
         if (response.status === 200) {
           const userData = response.data;
           setUserName(userData.userName);
-        } else if (response.status !== 200){
-          // Om begäran misslyckades, försök hämta användarnamnet från localStorage
-          const localStorageUserData = JSON.parse(localStorage.getItem("userData"));
-          if (localStorageUserData && localStorageUserData.userName) {
-            setUserName(localStorageUserData.userName);
-          } else {
-            // Om ingen användare hittades i localStorage heller, sätt ett standardvärde
+        } 
+           else {
+            // If no user is found in localstorage
             setUserName("Kunde ej hämta användarnamn");
           }
-        }
       } catch (error) {
         console.log("Error fetching user name: ", error);
       }
     }
     fetchUsername();
+    //We use [] so it only shows one time
   }, []);
   return (
-      <div className="username-container"> {/* Tilldela klassen här */}
+      <div className="username-container">
       <h4>{userName}</h4>
     </div>
   );

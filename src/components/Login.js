@@ -6,7 +6,6 @@ import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
 import { Alert } from "react-bootstrap";
 
-//import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const [employeID, setEmployeID] = useState("");
@@ -14,7 +13,7 @@ const Login = () => {
   const [userRole, setUserRole] = useState("");
   const [loginError, setLoginError] = useState(false);
   const history = useNavigate();
-
+// switch case depending on which role user have. User get redirected to that page
   useEffect(() => {
     if (userRole) {
       switch (userRole) {
@@ -35,14 +34,16 @@ const Login = () => {
   }, [userRole, history]);
 
   async function GetUsernameAndRole() {
+    //Axios request from server to check usersname and role
     try {
       const getResponse = await axios.get(
         "http://localhost:4000/usernameAndRole"
       );
       if (getResponse.status === 200) {
+        //Save response in userData and saves userId in localstorage
         const userData = getResponse.data;
         setUserRole(userData.userRole[0]);
-        localStorage.setItem("userID", JSON.stringify(userData.userId)); // Spara användar-ID:t i localStorage
+        localStorage.setItem("userID", JSON.stringify(userData.userId));
       } else {
         setLoginError(true);
         console.log("Failed to fetch username and role");
@@ -53,6 +54,7 @@ const Login = () => {
   }
 
   async function LoginHandler() {
+    // Axios request sends employeid and password to server and check if there is a match with database
     try {
       const response = await axios.post(
         "http://localhost:4000/submitFormToNotion",
