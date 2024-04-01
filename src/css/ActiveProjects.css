@@ -6,11 +6,6 @@
   display: flex;
   justify-content: center;
 }
-.project-cards {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 .Projects-h1 {
   border-bottom: 2px solid #f2f2f2;
 }

@@ -6,7 +6,6 @@ import "../css/Login.css";
 import NotionLogin from "../components/NotionLogin";
 import { Alert } from "react-bootstrap";
 
-
 //import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
@@ -84,8 +83,12 @@ const Login = () => {
 
         <section className="login-container">
           <div className="logo">
-            <img src={QuadSquadLogo} alt="Loga" />
+            <img
+              src={QuadSquadLogo}
+              alt="Loga"
+            />
           </div>
+          {/*if login fails, an alert will show */}
           {loginError && (
             <Alert variant="danger">Fel anställnings-id eller lösenord</Alert>
           )}
@@ -108,7 +111,6 @@ const Login = () => {
             </div>
 
             <div className="inputBox w70">
-
               <input
                 type="password"
                 name="password"
@@ -120,19 +122,18 @@ const Login = () => {
             </div>
 
             <div className="login">
-            <button 
-            id="login-btn" 
-            type="submit"
-            >
-
+              <button
+                id="login-btn"
+                type="submit"
+              >
                 Logga in
               </button>
               <NotionLogin />
             </div>
           </form>
         </section>
-        </section>
-      </div>
+      </section>
+    </div>
   );
 };
 

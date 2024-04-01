@@ -9,9 +9,7 @@ const Manager = () => {
     <div>
       <MyNavbar></MyNavbar>
       <div className="Employee-container">
-        <div className="project-cards">
-          <ShowPersonnel></ShowPersonnel>
-        </div>
+        <ShowPersonnel></ShowPersonnel>
       </div>
       <Footer />
     </div>

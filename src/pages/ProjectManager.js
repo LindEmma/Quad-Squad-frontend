@@ -11,9 +11,7 @@ const ProjectManager = () => {
     <div>
       <MyNavbar></MyNavbar>
       <div className="Employee-container">
-        <div className="project-cards">
-          <ActiveProjectsPM></ActiveProjectsPM>
-        </div>
+        <ActiveProjectsPM></ActiveProjectsPM>
       </div>
       <Footer /> 
     </div>

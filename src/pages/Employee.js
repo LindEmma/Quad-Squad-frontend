@@ -9,9 +9,7 @@ const Employee = () => {
     <div>
       <MyNavbar></MyNavbar>
       <div className="Employee-container">
-        <div className="project-cards">
-          <ActiveProjectsEmployee></ActiveProjectsEmployee>
-        </div>
+        <ActiveProjectsEmployee></ActiveProjectsEmployee>
       </div>
       <Footer /> {/* Ensure to include the Footer component like this */}
     </div>
