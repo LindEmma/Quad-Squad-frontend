@@ -24,7 +24,7 @@ export default class MyNavbar extends React.Component {
                             fluid 
                             style={{ maxWidth: 180 }} // Justera detta värde för att ändra storleken på bilden
                         />
-                        <BootstrapNavbar.Brand href="#home"><FetchUsername/></BootstrapNavbar.Brand> {/* Ta bort? */}
+                        <BootstrapNavbar.Brand><FetchUsername/></BootstrapNavbar.Brand>
                         <Nav className="me-auto">  
                         </Nav>
                         <Nav>
