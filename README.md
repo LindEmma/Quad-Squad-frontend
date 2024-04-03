@@ -18,7 +18,7 @@
 
 **Login.js** The login form includes fields for employee ID and password. When the form is submitted, the LoginHandler function is called, which sends a POST request to a server endpoint "/submitFormToNotion" with the provided employee ID and password. If the login is successful (status code 200), it calls the GetUsernameAndRole function to fetch user data including their role from another server endpoint "/usernameAndRole". Depending on the user's role (Anställd, Chef, Projektledare), the component redirects the user to different routes using the useHistory hook. If the login fails, an error message is displayed.
 
-**ModalPopUp.js**
+**ModalPopUp.js** is a popup box accessed through project cards by clicking the 'report time' button. It allows users to log the day, hours worked on a project, and add a comment. ModalPop.js transmits this information, along with the project it was reported from and the logged-in user, utilizing axios to send the data to server3."
 
 **Navbar.js**
 
